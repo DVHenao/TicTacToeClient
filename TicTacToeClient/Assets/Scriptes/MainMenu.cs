@@ -5,7 +5,7 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public enum State {MainScreen,LoginScreen,RegisterScreen, error};
+    public enum State {MainScreen,LoginScreen,RegisterScreen, LoginComplete};
 
     private State stateVar;
     private string tempAccountInfo;
@@ -14,12 +14,20 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenuObj;
     public GameObject registerMenuObj;
     public GameObject loginMenuObj;
+    public GameObject MainParentObj;
+    public GameObject GameParentObj;
+
 
     public TMP_Text usernameRegistration;
     public TMP_Text passwordRegistration;
 
+    public TMP_Text usernameLogin;
+    public TMP_Text passwordLogin;
+
     public TMP_Text registrationErrorMessage;
     public TMP_Text loginErrorMessage;
+
+
 
 
     // Start is called before the first frame update
@@ -57,15 +65,9 @@ public class MainMenu : MonoBehaviour
                     loginMenuObj.SetActive(false);
                 }
                 break;
-            case State.error:
-                if(registerMenuObj.activeInHierarchy)
-                {
-
-                }
-                else if (loginMenuObj.activeInHierarchy)
-                {
-
-                }
+            case State.LoginComplete:
+                GameParentObj.SetActive(true);
+                MainParentObj.SetActive(false);
                 break;
 
 
@@ -85,6 +87,11 @@ public class MainMenu : MonoBehaviour
     {
         stateVar = State.RegisterScreen;
     }
+    public void SetStateLoginComplete()
+    {
+        stateVar = State.LoginComplete;
+    }
+
 
     public void SaveRegistration()
     {
@@ -175,11 +182,78 @@ public class MainMenu : MonoBehaviour
             }
         }
 
-     
+        tempAccountInfo = "";
     }
 
     public void logIn()
     {
+        tempAccountInfo = usernameLogin.text + "," + passwordLogin.text;
+
+        if (tempAccountInfo == PlayerPrefs.GetString("account1"))
+        {
+            SetStateLoginComplete();
+            Debug.Log("account 1 login successfull");
+        }
+        else if (tempAccountInfo == PlayerPrefs.GetString("account2"))
+        {
+            SetStateLoginComplete();
+            Debug.Log("account 2 login successfull");
+        }
+        else if (tempAccountInfo == PlayerPrefs.GetString("account3"))
+        {
+            SetStateLoginComplete();
+            Debug.Log("account 3 login successfull");
+        }
+        else if (tempAccountInfo == PlayerPrefs.GetString("account4"))
+        {
+            SetStateLoginComplete();
+            Debug.Log("account 4 login successfull");
+        }
+        else if (tempAccountInfo == PlayerPrefs.GetString("account5"))
+        {
+            SetStateLoginComplete();
+            Debug.Log("account 5 login successfull");
+        }
+        else
+        {
+            Debug.Log("login unsuccessful");
+
+            string[] tempuser = PlayerPrefs.GetString("account1").Split(",");
+            if (tempuser[0] == usernameLogin.text)
+            {
+                Debug.Log("account 1 Wrong password");
+                return;
+            }
+            tempuser = PlayerPrefs.GetString("account2").Split(",");
+            if (tempuser[0] == usernameLogin.text)
+            {
+                Debug.Log("account 2 Wrong password");
+                return;
+            }
+            tempuser = PlayerPrefs.GetString("account3").Split(",");
+            if (tempuser[0] == usernameLogin.text)
+            {
+                Debug.Log("account 3 Wrong password");
+                return;
+            }
+            tempuser = PlayerPrefs.GetString("account4").Split(",");
+            if (tempuser[0] == usernameLogin.text)
+            {
+                Debug.Log("account 4 Wrong password");
+                return;
+            }
+            tempuser = PlayerPrefs.GetString("account5").Split(",");
+            if (tempuser[0] == usernameLogin.text)
+            {
+                Debug.Log("account 5 Wrong password");
+                return;
+            }
+            else
+            {
+                Debug.Log("username and password dont exist. Please Register");
+            }
+
+        }
 
     }
 
