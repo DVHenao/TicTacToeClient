@@ -24,8 +24,7 @@ public class MainMenu : MonoBehaviour
     public TMP_Text usernameLogin;
     public TMP_Text passwordLogin;
 
-    public TMP_Text registrationErrorMessage;
-    public TMP_Text loginErrorMessage;
+    public TMP_Text errorText;
 
 
 
@@ -109,7 +108,7 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account1").Split(",");
             if (tempuser[0] == usernameRegistration.text)
             {
-                Debug.Log("1registation username already exists!");
+                StartCoroutine(ShowMessage("Username already linked to an account", 3f));
                 return;
             }
         }
@@ -126,7 +125,7 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account2").Split(",");
             if (tempuser[0] == usernameRegistration.text)
             {
-                Debug.Log("2registation username already exists!");
+                StartCoroutine(ShowMessage("Username already linked to an account", 3f));
                 return;
             }
         }
@@ -143,7 +142,7 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account3").Split(",");
             if (tempuser[0] == usernameRegistration.text)
             {
-                Debug.Log("3registation username already exists!");
+                StartCoroutine(ShowMessage("Username already linked to an account", 3f));
                 return;
             }
         }
@@ -160,7 +159,7 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account4").Split(",");
             if (tempuser[0] == usernameRegistration.text)
             {
-                Debug.Log("4registation username already exists!");
+                StartCoroutine(ShowMessage("Username already linked to an account", 3f));
                 return;
             }
         }
@@ -177,7 +176,7 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account5").Split(",");
             if (tempuser[0] == usernameRegistration.text)
             {
-                Debug.Log("5registation username already exists!");
+                StartCoroutine(ShowMessage("Username already linked to an account", 3f));
                 return;
             }
         }
@@ -221,40 +220,39 @@ public class MainMenu : MonoBehaviour
             string[] tempuser = PlayerPrefs.GetString("account1").Split(",");
             if (tempuser[0] == usernameLogin.text)
             {
-                Debug.Log("account 1 Wrong password");
+                StartCoroutine(ShowMessage("Wrong password", 3f));
                 return;
             }
             tempuser = PlayerPrefs.GetString("account2").Split(",");
             if (tempuser[0] == usernameLogin.text)
             {
-                Debug.Log("account 2 Wrong password");
+                StartCoroutine(ShowMessage("Wrong password", 3f));
                 return;
             }
             tempuser = PlayerPrefs.GetString("account3").Split(",");
             if (tempuser[0] == usernameLogin.text)
             {
-                Debug.Log("account 3 Wrong password");
+                StartCoroutine(ShowMessage("Wrong password", 3f));
                 return;
             }
             tempuser = PlayerPrefs.GetString("account4").Split(",");
             if (tempuser[0] == usernameLogin.text)
             {
-                Debug.Log("account 4 Wrong password");
+                StartCoroutine(ShowMessage("Wrong password", 3f));
                 return;
             }
             tempuser = PlayerPrefs.GetString("account5").Split(",");
             if (tempuser[0] == usernameLogin.text)
             {
-                Debug.Log("account 5 Wrong password");
+                StartCoroutine(ShowMessage("Wrong password", 3f));
                 return;
             }
             else
             {
-                Debug.Log("username and password dont exist. Please Register");
+                StartCoroutine(ShowMessage("Username and password are not registered.", 3f));
             }
 
         }
-
     }
 
     public void debugClearPlayerprefs()
@@ -262,4 +260,13 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
+    IEnumerator ShowMessage(string message, float delay)
+    {
+        errorText.text = message;
+        errorText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(delay);
+        errorText.gameObject.SetActive(false);
+
+    }
 }
