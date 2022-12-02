@@ -172,7 +172,7 @@ public class GameController : MonoBehaviour
         restartButton.SetActive(false);
         SetPlayerButtons(true);
         SetPlayerColorsInactive();
-        startInfo.SetActive(true);
+        startInfo.SetActive(true);  
 
         for (int i = 0; i < buttonList.Length; i++)
         {
