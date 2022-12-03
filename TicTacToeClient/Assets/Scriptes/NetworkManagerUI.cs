@@ -10,16 +10,21 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
 
+    public GameObject PreGameMenu;
+
     private void Awake()
     {
         serverButton.onClick.AddListener(() =>{
             NetworkManager.Singleton.StartServer();
+            PreGameMenu.SetActive(false);
         });
         hostButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartHost();
+            PreGameMenu.SetActive(false);
         });
         clientButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartClient();
+            PreGameMenu.SetActive(false);
         });
     }
     // Start is called before the first frame update

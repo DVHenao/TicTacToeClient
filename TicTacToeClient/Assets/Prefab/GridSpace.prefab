@@ -123,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2125396316589665633}
+      - m_Target: {fileID: 3561455650152257069}
         m_TargetAssemblyTypeName: GridSpace, Assembly-CSharp
-        m_MethodName: SetSpace
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

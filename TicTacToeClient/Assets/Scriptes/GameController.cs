@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using Unity.Netcode;
 
 [System.Serializable]
 public class Player
@@ -13,12 +14,12 @@ public class Player
 
 [System.Serializable]
 public class PlayerColor
-{
+{ 
     public Color panelColor;
     public Color textColor;
 }
 
-public class GameController : MonoBehaviour
+public class GameController : NetworkBehaviour
 {
 
     public TMP_Text[] buttonList;
@@ -30,18 +31,25 @@ public class GameController : MonoBehaviour
     public PlayerColor activePlayerColor;
     public PlayerColor inactivePlayerColor;
     public GameObject startInfo;
+    public GameObject mainGameUI;
+
 
     private string playerSide;
     private int moveCount;
 
     void Awake()
     {
+            
         SetGameControllerReferenceOnButtons();
         gameOverPanel.SetActive(false);
         moveCount = 0;
         restartButton.SetActive(false);
     }
-
+    private void Update()
+    {
+        if (!IsOwnedByServer)
+            Destroy(mainGameUI);
+    }
     void SetGameControllerReferenceOnButtons()
     {
         for (int i = 0; i < buttonList.Length; i++)

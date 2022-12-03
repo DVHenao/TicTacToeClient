@@ -2,8 +2,10 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Netcode;
 
-public class GridSpace : MonoBehaviour
+
+public class GridSpace : NetworkBehaviour
 {
 
     public Button button;
@@ -16,8 +18,11 @@ public class GridSpace : MonoBehaviour
         gameController = controller;
     }
 
-    public void SetSpace()
+    [ClientRpc]
+    public void SetSpaceClientRpc()
     {
+
+        Debug.Log("button pressed");
         buttonText.text = gameController.GetPlayerSide();
         button.interactable = false;
         gameController.EndTurn();
