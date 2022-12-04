@@ -34,6 +34,9 @@ public class GameController : NetworkBehaviour
     public GameObject mainGameUI;
 
 
+    public Button messageButton;
+    public TMP_Text message;
+
     private string playerSide;
     private int moveCount;
 
@@ -208,5 +211,19 @@ public class GameController : NetworkBehaviour
         playerX.text.color = inactivePlayerColor.textColor;
         playerO.panel.color = inactivePlayerColor.panelColor;
         playerO.text.color = inactivePlayerColor.textColor;
+    }
+    [ClientRpc]
+    public void OnButtonPressClientRpc(string text)
+    {
+        StartCoroutine(ShowMessage(text));
+    }
+    IEnumerator ShowMessage(string text)
+    {
+        message.text = text;
+        message.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2.0f);
+        message.gameObject.SetActive(false);
+
     }
 }

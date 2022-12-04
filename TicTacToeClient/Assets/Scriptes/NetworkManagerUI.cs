@@ -6,7 +6,6 @@ using Unity.Netcode;
 
 public class NetworkManagerUI : MonoBehaviour
 {
-    [SerializeField] private Button serverButton;
     [SerializeField] private Button hostButton;
     [SerializeField] private Button clientButton;
 
@@ -14,10 +13,6 @@ public class NetworkManagerUI : MonoBehaviour
 
     private void Awake()
     {
-        serverButton.onClick.AddListener(() =>{
-            NetworkManager.Singleton.StartServer();
-            PreGameMenu.SetActive(false);
-        });
         hostButton.onClick.AddListener(() => {
             NetworkManager.Singleton.StartHost();
             PreGameMenu.SetActive(false);
