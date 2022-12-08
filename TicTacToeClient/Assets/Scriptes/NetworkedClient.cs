@@ -21,9 +21,10 @@ public class NetworkedClient : MonoBehaviour
     public GameObject gameUI;
     public GameObject disconnectUI;
     public GameObject waitUI;
+    public GameObject LoginUI;
+    private bool gameStartStop = false;
 
     public TMP_Text joinText;
-    public GameObject WaitingScreenUI;
 
     private string gameroomID;
 
@@ -124,19 +125,27 @@ public class NetworkedClient : MonoBehaviour
         switch (fortnite[0])
         {
             case "gameroomjoined":
-                if(fortnite[1] == "empty") // youre first!
+                if(fortnite[1] == "empty") // first joined!
                 {
+                   LoginUI.SetActive(false);
+                   gameUI.SetActive(true);
+                   waitUI.SetActive(true);
 
                 }
-                if (fortnite[1] == "filled") // youre second! time to play!
+                if (fortnite[1] == "filled") //second joined! time to play!
                 {
+                    LoginUI.SetActive(false);
+                    gameUI.SetActive(true);
+                    waitUI.SetActive(false);
 
                 }
                 if (fortnite[1] == "spectate") //time to watch!
                 {
-
+                    LoginUI.SetActive(false);
+                    gameUI.SetActive(true);
+                    waitUI.SetActive(false);
                 }
-                WaitingScreenUI.SetActive(true);
+
                 break;
 
             case "disconnect":// UI cover screen informing player of DC

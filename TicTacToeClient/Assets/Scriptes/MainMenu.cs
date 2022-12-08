@@ -16,6 +16,8 @@ public class MainMenu : MonoBehaviour
     public GameObject loginMenuObj;
     public GameObject MainParentObj;
     public GameObject GameParentObj;
+    public GameObject PauseUI;
+    public GameObject mainGameUI;
 
 
     public TMP_Text usernameRegistration;
@@ -67,6 +69,8 @@ public class MainMenu : MonoBehaviour
             case State.LoginComplete:
                 GameParentObj.SetActive(true);
                 MainParentObj.SetActive(false);
+                PauseUI.SetActive(true);
+                mainGameUI.SetActive(true);
                 break;
 
 

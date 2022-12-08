@@ -13,14 +13,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private void Awake()
     {
-        hostButton.onClick.AddListener(() => {
-            NetworkManager.Singleton.StartHost();
-            PreGameMenu.SetActive(false);
-        });
-        clientButton.onClick.AddListener(() => {
-            NetworkManager.Singleton.StartClient();
-            PreGameMenu.SetActive(false);
-        });
+       
     }
     // Start is called before the first frame update
     void Start()
