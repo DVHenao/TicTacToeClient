@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
-using Unity.Netcode;
 
 [System.Serializable]
 public class Player
@@ -19,7 +18,7 @@ public class PlayerColor
     public Color textColor;
 }
 
-public class GameController : NetworkBehaviour
+public class GameController : MonoBehaviour
 {
 
     public TMP_Text[] buttonList;
@@ -33,12 +32,15 @@ public class GameController : NetworkBehaviour
     public GameObject startInfo;
     public GameObject mainGameUI;
 
+    public GameObject EventNetworkRef;
+
 
     public Button messageButton;
     public TMP_Text message;
 
     private string playerSide;
     private int moveCount;
+    private bool stopSettingSide = true;
 
     void Awake()
     {
@@ -63,17 +65,26 @@ public class GameController : NetworkBehaviour
 
     public void SetStartingSide(string startingSide)
     {
-        playerSide = startingSide;
-        if (playerSide == "X")
-        {
-            SetPlayerColors(playerX, playerO);
-        }
-        else
-        {
-            SetPlayerColors(playerO, playerX);
-        }
+       if (stopSettingSide) 
+       {
+            playerSide = startingSide;
+            stopSettingSide = false;
 
-        StartGame();
+            if (playerSide == "X")
+            {
+                SetPlayerColors(playerX, playerO);
+                EventNetworkRef.GetComponent<NetworkedClient>().SendMessageToHost("buttonpressed,X");
+                Debug.Log("test1");
+            }
+            else
+            {
+                SetPlayerColors(playerO, playerX);
+                EventNetworkRef.GetComponent<NetworkedClient>().SendMessageToHost("buttonpressed,O");
+                Debug.Log("test1");
+            }
+
+            StartGame();
+       }
     }
 
     void StartGame()
@@ -212,8 +223,7 @@ public class GameController : NetworkBehaviour
         playerO.panel.color = inactivePlayerColor.panelColor;
         playerO.text.color = inactivePlayerColor.textColor;
     }
-    [ClientRpc]
-    public void OnButtonPressClientRpc(string text)
+    public void OnButtonPress(string text)
     {
         StartCoroutine(ShowMessage(text));
     }

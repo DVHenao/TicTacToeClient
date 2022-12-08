@@ -5,7 +5,7 @@ using TMPro;
 using Unity.Netcode;
 
 
-public class GridSpace : NetworkBehaviour
+public class GridSpace : MonoBehaviour
 {
 
     public Button button;
@@ -18,17 +18,8 @@ public class GridSpace : NetworkBehaviour
         gameController = controller;
     }
 
-    [ClientRpc]
-    public void SetSpaceClientRpc()
-    {
 
-        Debug.Log("button pressed");
-        buttonText.text = gameController.GetPlayerSide();
-        button.interactable = false;
-        gameController.EndTurn();
-    }
-    [ServerRpc]
-    public void SetSpaceServerRpc()
+    public void SetSpace()
     {
 
         Debug.Log("button pressed");

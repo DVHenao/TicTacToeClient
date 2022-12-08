@@ -24,6 +24,8 @@ public class NetworkedClient : MonoBehaviour
     public GameObject LoginUI;
     private bool gameStartStop = false;
 
+    public GameObject gamecontroller;
+
     public TMP_Text joinText;
 
     private string gameroomID;
@@ -145,14 +147,20 @@ public class NetworkedClient : MonoBehaviour
                     gameUI.SetActive(true);
                     waitUI.SetActive(false);
                 }
-
                 break;
 
             case "disconnect":// UI cover screen informing player of DC
                 waitUI.SetActive(true);
                 break;
 
+            case "buttonpressed":
+                if (fortnite[1] == "otherplayerX")
+                    gamecontroller.GetComponent<GameController>().SetStartingSide("O");
+                else
+                    gamecontroller.GetComponent<GameController>().SetStartingSide("X");
 
+
+                    break;
         }
     }
 

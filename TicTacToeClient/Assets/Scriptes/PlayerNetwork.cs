@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class PlayerNetwork : NetworkBehaviour
+public class PlayerNetwork : MonoBehaviour
 {
     private void Update()
     {
-        if (!IsOwner)
-            return;
-
 
         Vector3 moveDir = new Vector3(0, 0, 0);
 
