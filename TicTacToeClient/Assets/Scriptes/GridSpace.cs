@@ -27,4 +27,13 @@ public class GridSpace : NetworkBehaviour
         button.interactable = false;
         gameController.EndTurn();
     }
+    [ServerRpc]
+    public void SetSpaceServerRpc()
+    {
+
+        Debug.Log("button pressed");
+        buttonText.text = gameController.GetPlayerSide();
+        button.interactable = false;
+        gameController.EndTurn();
+    }
 }

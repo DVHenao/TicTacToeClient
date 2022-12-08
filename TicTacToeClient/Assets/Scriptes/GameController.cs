@@ -50,8 +50,8 @@ public class GameController : NetworkBehaviour
     }
     private void Update()
     {
-        if (!IsOwnedByServer)
-            Destroy(mainGameUI);
+        //if (!IsOwnedByServer)
+          //  Destroy(mainGameUI);
     }
     void SetGameControllerReferenceOnButtons()
     {

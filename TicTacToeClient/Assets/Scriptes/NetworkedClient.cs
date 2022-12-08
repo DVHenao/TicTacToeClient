@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using TMPro;
 
 public class NetworkedClient : MonoBehaviour
 {
@@ -16,6 +17,15 @@ public class NetworkedClient : MonoBehaviour
     byte error;
     bool isConnected = false;
     int ourClientID;
+
+    public GameObject gameUI;
+    public GameObject disconnectUI;
+    public GameObject waitUI;
+
+    public TMP_Text joinText;
+    public GameObject WaitingScreenUI;
+
+    private string gameroomID;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +67,7 @@ public class NetworkedClient : MonoBehaviour
                     break;
                 case NetworkEventType.DisconnectEvent:
                     isConnected = false;
+                    SendMessageToHost("disconnect");
                     Debug.Log("disconnected.  " + recConnectionID);
                     break;
             }
@@ -98,13 +109,42 @@ public class NetworkedClient : MonoBehaviour
     
     public void SendMessageToHost(string msg)
     {
+
+        // structure things in gameroom,playerid
         byte[] buffer = Encoding.Unicode.GetBytes(msg);
         NetworkTransport.Send(hostID, connectionID, reliableChannelID, buffer, msg.Length * sizeof(char), out error);
     }
 
     private void ProcessRecievedMsg(string msg, int id)
     {
-        Debug.Log("msg recieved = " + msg + ".  connection id = " + id);
+
+        Debug.Log("message recieved: " + msg);
+        string[] fortnite = msg.Split(',');
+
+        switch (fortnite[0])
+        {
+            case "gameroomjoined":
+                if(fortnite[1] == "empty") // youre first!
+                {
+
+                }
+                if (fortnite[1] == "filled") // youre second! time to play!
+                {
+
+                }
+                if (fortnite[1] == "spectate") //time to watch!
+                {
+
+                }
+                WaitingScreenUI.SetActive(true);
+                break;
+
+            case "disconnect":// UI cover screen informing player of DC
+                waitUI.SetActive(true);
+                break;
+
+
+        }
     }
 
     public bool IsConnected()
@@ -112,5 +152,11 @@ public class NetworkedClient : MonoBehaviour
         return isConnected;
     }
 
+
+    public void JoinButtonPressed()
+    {
+        string gameroomID = "gameroom" + "," + joinText.text; 
+        SendMessageToHost(gameroomID);
+    }    
 
 }
