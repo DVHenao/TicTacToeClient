@@ -156,9 +156,12 @@ public class NetworkedClient : MonoBehaviour
             case "buttonpressed":
                 if (fortnite[1] == "otherplayerX")
                     gamecontroller.GetComponent<GameController>().SetStartingSide("O");
-                else
+                else if (fortnite[1] == "otherplayerO")
                     gamecontroller.GetComponent<GameController>().SetStartingSide("X");
-
+                else // recieving the # of the gridspace that opponent pressed
+                {
+                    gamecontroller.GetComponent<GameController>().buttonList[int.Parse(fortnite[1]) - 1].SetSpaceFromOpponent(fortnite[2]);
+                }
 
                     break;
         }
