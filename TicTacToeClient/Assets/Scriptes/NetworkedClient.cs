@@ -22,7 +22,8 @@ public class NetworkedClient : MonoBehaviour
     public GameObject disconnectUI;
     public GameObject waitUI;
     public GameObject LoginUI;
-    private bool gameStartStop = false;
+    public GameObject BlockingPanel;
+    public bool gameStartStop = false;
 
     public GameObject gamecontroller;
 
@@ -79,7 +80,6 @@ public class NetworkedClient : MonoBehaviour
     
     private void Connect()
     {
-
         if (!isConnected)
         {
             Debug.Log("Attempting to create connection");
@@ -120,7 +120,7 @@ public class NetworkedClient : MonoBehaviour
 
     private void ProcessRecievedMsg(string msg, int id)
     {
-
+        bool tictactoeRepeat = true;
         Debug.Log("message recieved: " + msg);
         string[] fortnite = msg.Split(',');
 
@@ -155,12 +155,19 @@ public class NetworkedClient : MonoBehaviour
 
             case "buttonpressed":
                 if (fortnite[1] == "otherplayerX")
-                    gamecontroller.GetComponent<GameController>().SetStartingSide("O");
-                else if (fortnite[1] == "otherplayerO")
-                    gamecontroller.GetComponent<GameController>().SetStartingSide("X");
-                else // recieving the # of the gridspace that opponent pressed
                 {
-                    gamecontroller.GetComponent<GameController>().buttonList[int.Parse(fortnite[1]) - 1].SetSpaceFromOpponent(fortnite[2]);
+                    gamecontroller.GetComponent<GameController>().SetStartingSideFromOpponent("X");
+                    BlockingPanel.SetActive(true);
+                }
+                else if (fortnite[1] == "otherplayerO")
+                {
+                    gamecontroller.GetComponent<GameController>().SetStartingSideFromOpponent("O");
+                    BlockingPanel.SetActive(true);
+                }
+                else if (tictactoeRepeat)// recieving the # of the gridspace that opponent pressed
+                {
+                    gamecontroller.GetComponent<GameController>().buttonList[int.Parse(fortnite[1]) - 1].SetSpaceFromOpponent();
+                    tictactoeRepeat = false;
                 }
 
                     break;

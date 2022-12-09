@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
 
     private string playerSide;
     private int moveCount;
-    private bool stopSettingSide = true;
+    public bool stopSettingSide = true;
 
     void Awake()
     {
@@ -86,6 +86,21 @@ public class GameController : MonoBehaviour
 
             StartGame();
        }
+    }
+    public void SetStartingSideFromOpponent(string startingSide)
+    {
+        if (stopSettingSide)
+        {
+            playerSide = startingSide;
+            stopSettingSide = false;
+
+            if (playerSide == "X")
+                SetPlayerColors(playerX, playerO);
+            else
+                SetPlayerColors(playerO, playerX);
+    
+        }
+            StartGame();
     }
 
     void StartGame()

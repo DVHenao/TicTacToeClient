@@ -2891,6 +2891,7 @@ MonoBehaviour:
   disconnectUI: {fileID: 1325929906}
   waitUI: {fileID: 620244616}
   LoginUI: {fileID: 2032753024}
+  BlockingPanel: {fileID: 1783025535}
   gamecontroller: {fileID: 1306810051}
   joinText: {fileID: 979217393}
 --- !u!1 &799441937
@@ -7213,6 +7214,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748736885}
   m_CullTransparentMesh: 1
+--- !u!1 &1783025535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783025536}
+  - component: {fileID: 1783025538}
+  - component: {fileID: 1783025537}
+  m_Layer: 5
+  m_Name: BlockingPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1783025536
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783025535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1926795797}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1783025537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783025535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1783025538
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783025535}
+  m_CullTransparentMesh: 1
 --- !u!114 &1828779728 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7845599296466875550, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
@@ -7359,6 +7436,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882390851}
   m_CullTransparentMesh: 1
+--- !u!224 &1926795797 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4754450969399598634, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+  m_PrefabInstance: {fileID: 2046868480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1982344297
 GameObject:
   m_ObjectHideFlags: 0
@@ -7790,37 +7872,73 @@ PrefabInstance:
       value: GridSpace 1
       objectReference: {fileID: 0}
     - target: {fileID: 2556391715417422448, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
+    - target: {fileID: 2556391715417422448, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
+    - target: {fileID: 2556391715517223454, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
     - target: {fileID: 2556391715517223454, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
     - target: {fileID: 2556391715564977291, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
+    - target: {fileID: 2556391715564977291, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
+    - target: {fileID: 2556391715904489625, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
     - target: {fileID: 2556391715904489625, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
     - target: {fileID: 2556391715937262460, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
+    - target: {fileID: 2556391715937262460, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
+    - target: {fileID: 2556391715963978635, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
     - target: {fileID: 2556391715963978635, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
     - target: {fileID: 2556391716269558437, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
+    - target: {fileID: 2556391716269558437, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
     - target: {fileID: 2556391716638637220, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
+    - target: {fileID: 2556391716638637220, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
+    - target: {fileID: 4634491853429862949, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: BlockingPanel
+      value: 
+      objectReference: {fileID: 1783025535}
     - target: {fileID: 4634491853429862949, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: EventNetworkRef
       value: 
@@ -8098,7 +8216,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4754450969399598634, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783025536}
   m_SourcePrefab: {fileID: 100100000, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
 --- !u!1 &2053803103
 GameObject:
