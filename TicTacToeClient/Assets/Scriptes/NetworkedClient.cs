@@ -169,8 +169,10 @@ public class NetworkedClient : MonoBehaviour
                     gamecontroller.GetComponent<GameController>().buttonList[int.Parse(fortnite[1]) - 1].SetSpaceFromOpponent();
                     tictactoeRepeat = false;
                 }
-
-                    break;
+                break;
+            case "messagesent":
+                gamecontroller.GetComponent<GameController>().StartCoroutine(gamecontroller.GetComponent<GameController>().ShowMessage(fortnite[1]));
+                break;
         }
     }
 

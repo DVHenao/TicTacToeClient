@@ -186,7 +186,9 @@ public class GameController : MonoBehaviour
 
     void GameOver(string winningPlayer)
     {
+        EventNetworkRef.GetComponent<NetworkedClient>().BlockingPanel.SetActive(false);
         SetBoardInteractable(false);
+
         if (winningPlayer == "draw")
         {
             SetGameOverText("It's a Draw!");
@@ -208,6 +210,7 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         moveCount = 0;
+        stopSettingSide = true;
         gameOverPanel.SetActive(false);
         restartButton.SetActive(false);
         SetPlayerButtons(true);
@@ -243,9 +246,11 @@ public class GameController : MonoBehaviour
     }
     public void OnButtonPress(string text)
     {
-        StartCoroutine(ShowMessage(text));
+
+        EventNetworkRef.GetComponent<NetworkedClient>().SendMessageToHost("messagesent," + text);
+
     }
-    IEnumerator ShowMessage(string text)
+    public IEnumerator ShowMessage(string text)
     {
         message.text = text;
         message.gameObject.SetActive(true);

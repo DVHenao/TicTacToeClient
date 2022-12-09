@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2892,6 +2892,7 @@ MonoBehaviour:
   waitUI: {fileID: 620244616}
   LoginUI: {fileID: 2032753024}
   BlockingPanel: {fileID: 1783025535}
+  gameStartStop: 0
   gamecontroller: {fileID: 1306810051}
   joinText: {fileID: 979217393}
 --- !u!1 &799441937
@@ -5225,7 +5226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9.360413}
+  m_AnchoredPosition: {x: 0, y: -9.360382}
   m_SizeDelta: {x: 287.9999, y: 3.3875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254181242
@@ -7249,8 +7250,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -46.1026, y: -3.8419037}
+  m_SizeDelta: {x: 169.0427, y: 115.2563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1783025537
 MonoBehaviour:
@@ -7265,7 +7266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7739,6 +7740,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 293566340}
     m_Modifications:
+    - target: {fileID: 532125995989216869, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPress
+      objectReference: {fileID: 0}
     - target: {fileID: 815077196450318931, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: m_Name
       value: MAINGAME CANVAS
@@ -7829,11 +7834,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815077196450318959, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 526.7
       objectReference: {fileID: 0}
     - target: {fileID: 815077196450318959, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 243.76279
+      value: 300.3
       objectReference: {fileID: 0}
     - target: {fileID: 815077196450318959, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7871,6 +7876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridSpace 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2026625097407805956, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPress
+      objectReference: {fileID: 0}
     - target: {fileID: 2556391715417422448, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: BlockingPanel
       value: 
@@ -7935,6 +7944,10 @@ PrefabInstance:
       propertyPath: EventNetworkRef
       value: 
       objectReference: {fileID: 765189940}
+    - target: {fileID: 3616229002480152506, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPress
+      objectReference: {fileID: 0}
     - target: {fileID: 4634491853429862949, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: BlockingPanel
       value: 
@@ -8023,6 +8036,10 @@ PrefabInstance:
       propertyPath: buttonListText.Array.data[8]
       value: 
       objectReference: {fileID: 1258481381}
+    - target: {fileID: 7214330771194175593, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPress
+      objectReference: {fileID: 0}
     - target: {fileID: 8113207224154912790, guid: 0b1e6490a39ba2540a61dc70cc42d2c2, type: 3}
       propertyPath: m_Name
       value: GridSpace 6

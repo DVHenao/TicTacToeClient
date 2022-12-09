@@ -29,8 +29,8 @@ public class GridSpace : MonoBehaviour
         Debug.Log("button pressed " + this.name);
         buttonText.text = gameController.GetPlayerSide();
         button.interactable = false;
-        gameController.EndTurn();
         BlockingPanel.SetActive(true);
+        gameController.EndTurn();
     }
 
     public void SetSpaceFromOpponent()
@@ -38,8 +38,8 @@ public class GridSpace : MonoBehaviour
         Debug.Log("enemy pressed");
         buttonText.text = gameController.GetPlayerSide();
         button.interactable = false;
-        gameController.EndTurn();
         BlockingPanel.SetActive(false);
+        gameController.EndTurn();
     }
 
 }
