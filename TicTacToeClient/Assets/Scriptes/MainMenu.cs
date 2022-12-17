@@ -264,7 +264,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    IEnumerator ShowMessage(string message, float delay)
+    public IEnumerator ShowMessage(string message, float delay)
     {
         errorText.text = message;
         errorText.gameObject.SetActive(true);

@@ -23,13 +23,21 @@ public class NetworkedClient : MonoBehaviour
     public GameObject waitUI;
     public GameObject LoginUI;
     public GameObject BlockingPanel;
+    public GameObject spectateButton;
     public bool gameStartStop = false;
 
     public GameObject gamecontroller;
+    public GameObject MainMenu;
 
     public TMP_Text joinText;
 
     private string gameroomID;
+
+    public TMP_Text registerUsername;
+    public TMP_Text registerPassword;
+
+    public TMP_Text loginUsername;
+    public TMP_Text loginPassword;
 
     // Start is called before the first frame update
     void Start()
@@ -132,6 +140,8 @@ public class NetworkedClient : MonoBehaviour
                    LoginUI.SetActive(false);
                    gameUI.SetActive(true);
                    waitUI.SetActive(true);
+                   BlockingPanel.SetActive(false);
+                   spectateButton.SetActive(false);
 
                 }
                 if (fortnite[1] == "filled") //second joined! time to play!
@@ -139,6 +149,8 @@ public class NetworkedClient : MonoBehaviour
                     LoginUI.SetActive(false);
                     gameUI.SetActive(true);
                     waitUI.SetActive(false);
+                    BlockingPanel.SetActive(false);
+                    spectateButton.SetActive(false);
 
                 }
                 if (fortnite[1] == "spectate") //time to watch!
@@ -146,6 +158,8 @@ public class NetworkedClient : MonoBehaviour
                     LoginUI.SetActive(false);
                     gameUI.SetActive(true);
                     waitUI.SetActive(false);
+                    BlockingPanel.SetActive(true);
+                    spectateButton.SetActive(true);
                 }
                 break;
 
@@ -173,6 +187,23 @@ public class NetworkedClient : MonoBehaviour
             case "messagesent":
                 gamecontroller.GetComponent<GameController>().StartCoroutine(gamecontroller.GetComponent<GameController>().ShowMessage(fortnite[1]));
                 break;
+
+            case "loginregister":
+
+                if (fortnite[1] == "loginsuccess")
+                {
+                    MainMenu.GetComponent<MainMenu>().SetStateLoginComplete();
+                }
+                if (fortnite[1] == "wrongpassword")
+                {
+                    MainMenu.GetComponent<MainMenu>().StartCoroutine(MainMenu.GetComponent<MainMenu>().ShowMessage("Wrong password", 3f));
+                }
+                if (fortnite[1] == "noaccount")
+                {
+
+                }
+                break;
+
         }
     }
 
@@ -186,6 +217,23 @@ public class NetworkedClient : MonoBehaviour
     {
         string gameroomID = "gameroom" + "," + joinText.text; 
         SendMessageToHost(gameroomID);
-    }    
+    }
+
+    public void OnSpectateButtonPressed()
+    {
+        LoginUI.SetActive(true);
+    }
+
+    public void registerButtonPressed()
+    {
+        string credentials = "register,"+ registerUsername.text +","+registerPassword.text;
+        SendMessageToHost(credentials);
+    }
+
+    public void loginButtonPressed()
+    {
+        string credentials = "login," + loginUsername.text.Remove(loginUsername.text.Length-1) + "," + loginPassword.text.Remove(loginPassword.text.Length - 1);
+        SendMessageToHost(credentials);
+    }
 
 }
