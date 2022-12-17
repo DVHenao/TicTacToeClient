@@ -200,7 +200,15 @@ public class NetworkedClient : MonoBehaviour
                 }
                 if (fortnite[1] == "noaccount")
                 {
-
+                    MainMenu.GetComponent<MainMenu>().StartCoroutine(MainMenu.GetComponent<MainMenu>().ShowMessage("No account, please register", 3f));
+                }
+                if (fortnite[1] == "usernametaken")
+                {
+                    MainMenu.GetComponent<MainMenu>().StartCoroutine(MainMenu.GetComponent<MainMenu>().ShowMessage("username taken, please choose another", 3f));
+                }
+                if (fortnite[1] == "accountcreated")
+                {
+                    MainMenu.GetComponent<MainMenu>().StartCoroutine(MainMenu.GetComponent<MainMenu>().ShowMessage("account created! Log in now!", 3f));
                 }
                 break;
 
@@ -226,8 +234,11 @@ public class NetworkedClient : MonoBehaviour
 
     public void registerButtonPressed()
     {
-        string credentials = "register,"+ registerUsername.text +","+registerPassword.text;
-        SendMessageToHost(credentials);
+        if(registerUsername.text.Length >=2 && registerPassword.text.Length>=2)
+        {
+            string credentials = "register," + registerUsername.text.Remove(registerUsername.text.Length - 1) + "," + registerPassword.text.Remove(registerPassword.text.Length - 1);
+            SendMessageToHost(credentials);
+        }
     }
 
     public void loginButtonPressed()
